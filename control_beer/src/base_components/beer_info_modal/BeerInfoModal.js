@@ -1,4 +1,5 @@
 import { Button, Modal } from "react-bootstrap";
+import { InfoTable } from "./info_table/InfoTable";
 
 export function BeerInfoModal(props) {
     return (
@@ -18,11 +19,12 @@ export function BeerInfoModal(props) {
           <p>
             {props.beer.name}
             {props.beer.description}
-            
           </p>
+          <InfoTable beer={props.beer}/>
+
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
+          <Button variant='dark' onClick={props.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
     );
