@@ -9,7 +9,7 @@ export const AbvAmount = [  {'abv':10,'text':'danger'},
 export const BASE_URL = 'https://api.punkapi.com/v2/beers'
 
 
-export function GetData (optionalParams) {
+export function GetData (optionalParams='') {
     console.log('get data function with optional path params: ',optionalParams)
 
     // the next condition check if there are any search parameters to use, and if so, it replace spaces with _ and creates the 

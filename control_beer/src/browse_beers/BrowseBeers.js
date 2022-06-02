@@ -8,12 +8,15 @@ import { FoodPairingFilter } from './food_pairing_filter/FoodPairingFilter';
 export function BrowseBeers(props) {
 
       // Declare a new state variable, which we'll call "count"
-    const [count, setCount] = useState(0);
+    const [beersData, setBeersData] = useState([]);
 
     useEffect(() => {
+      var data = GetData()
+      console.log('data:',data)
+      setBeersData(data)
+    }
+    );
 
-        document.title = `You clicked ${count} times`;
-      });
 
     return  <>
                 {/* <h3>Hello, {props.name}</h3>;

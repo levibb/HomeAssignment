@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { NavBar } from './base_components/nav_bar/NavBar';
@@ -6,8 +6,15 @@ import { Container,Row } from 'react-bootstrap';
 import { BrowseBeers } from './browse_beers/BrowseBeers';
 import { Route, Routes } from 'react-router-dom';
 import { FavoriteBeers } from './favorite_beers/FavoriteBeers';
+import { useDispatch, useSelector } from 'react-redux';
+import { addNewElem, removeAll, removeElem } from './redux/favorites';
 
-function App() {
+export default function App() {
+
+  useEffect(() => {
+    document.title = `Beers place`;
+  });
+
   return (
           <>
             <NavBar/>
@@ -26,4 +33,3 @@ function App() {
          );
 }
 
-export default App;
