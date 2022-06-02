@@ -1,0 +1,49 @@
+
+.card-img {
+    margin: auto;
+    max-width: 43px;
+}
+
+.card {
+    width: 14rem;
+    height: 20rem;
+    border-radius: 20px;
+    border-width: 0.0px;
+    border-style: solid;
+    align-items: center;
+    color: rgb(233, 233, 233);
+    background: url('./cardbg.png');
+    border-color: rgb(255, 254, 254);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.animate {
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.animate:hover {
+    box-shadow: 5px 6px 6px 2px #1d1d1d;
+    transform: scale(1.04);
+    color:black;
+    background: url('./beer-levi2.gif');
+}
+
+.bg {
+    background-color: rgba(80, 79, 79, 0.3);
+    border-radius: 17px;
+}
+
+.star {
+    width: 25px;
+}
+
+/* https://blog.openreplay.com/mastering-css-transitions-with-react-18 */
+/* https://dev.to/adriantwarog/tutorial-on-css-background-image-hovers-transitions-10cm */
+/* 'https://acegif.com/wp-content/gif/beer-10.gif' */
+
