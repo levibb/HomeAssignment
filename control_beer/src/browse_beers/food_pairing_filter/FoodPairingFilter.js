@@ -2,23 +2,22 @@ import { useState } from "react";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import './FoodPairingFilter.css'
 import { GetData } from "../../common/common";
-import { addNewElem, removeAll, removeElem } from "../../redux/favorites";
-import { useDispatch, useSelector } from "react-redux";
+// import { addNewElem, removeAll, removeElem } from "../../redux/favorites";
+// import { useDispatch, useSelector } from "react-redux";
 
 export function FoodPairingFilter(props) {
 
     const [searchValue, setSearchValue] = useState('');
 
-    const { data } = useSelector((state) => state.favorite)
-    const dispatch = useDispatch();
-
+    // const { data } = useSelector((state) => state.favorite)
+    // const dispatch = useDispatch();
 
     return (
         <>
-                    <h1 style={{color:'white'}}>global state data: {data}</h1>
+                    {/* <h1 style={{color:'white'}}>global state data: {data}</h1>
                       <button onClick={() => dispatch(removeElem())}>remove action</button>
                       <button onClick={() => dispatch(removeAll())}>remove all</button>
-                      <button onClick={() => dispatch(addNewElem(344))}>add new</button>
+                      <button onClick={() => dispatch(addNewElem(344))}>add new</button> */}
             <Container className=' search_box pt-4'
                        style={{ position: 'sticky',
                                 top: 55, 

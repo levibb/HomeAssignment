@@ -3,19 +3,29 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { Provider } from 'react-redux';
 import App from './App';
-import store from './redux/configureStore'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom'
+import { configureStore } from "@reduxjs/toolkit";
+import beersReducer from "./features/beers.js";
+
+const store = configureStore({
+  reducer: {
+    beers: beersReducer
+  }
+})
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
-        <Provider store={store}>
+
+    {/* provider means - every compoent im our app should have access to this store (global statae) */}
+        <Provider store={store}> 
           <App />
         </Provider>
+
     </BrowserRouter>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
 reportWebVitals();

@@ -25,6 +25,7 @@
 .animate {
     transition: all 0.5s ease;
     cursor: pointer;
+    background-position-x: right;
 }
 
 .animate:hover {
@@ -32,6 +33,7 @@
     transform: scale(1.04);
     color:black;
     background: url('./beer-levi2.gif');
+    background-position-x: right;
 }
 
 .bg {
