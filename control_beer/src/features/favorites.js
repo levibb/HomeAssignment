@@ -10,7 +10,8 @@ const favoritesSlice = createSlice({
         // this action add the chosen beer ID to the favorites state:
         addToFavorites: (state,action) => {
             state.push({
-              'beerId': action.payload
+              'beerId': action.payload,
+              'rank':''
             });
             console.log(action.payload,'added to favorite',current(state))
 
@@ -33,8 +34,22 @@ const favoritesSlice = createSlice({
             console.log('removed all Favorites',current(state))
         },
 
+        // this funtion looks for the elem Index at the array by the beer ID and update its rank value
         updateRank: (state,action) => {
-            state.value = action.payload;
+
+            const index = state.findIndex(checkBeer);
+
+            function checkBeer(beer) {
+              return beer.beerId == action.payload.beerId;
+            }
+
+            console.log('update rank for beer Id: ',action.payload)
+            console.log('the index is ',index)
+
+            state[index].rank = action.payload.rank
+
+            console.log(current(state))
+
         }
     }
 });

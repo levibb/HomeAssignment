@@ -12,6 +12,7 @@ export function FavoriteBeers(props) {
 
     useEffect(() => {
         console.log('favorites',favorites)
+        window.scrollTo(0, 0);
         axios.get(BASE_URL+'?ids='+idsForApiRequest(favorites))
         .then((response) => {
             setFavoritesData(response.data)

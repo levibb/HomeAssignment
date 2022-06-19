@@ -6,7 +6,6 @@ import { AbvAmount } from "../../../common/common";
 import { useDispatch, useSelector } from "react-redux";
 import { addToFavorites, removeFromFavorites } from "../../../features/favorites";
 import { useEffect, useState } from "react";
-import { ConfirmationModal } from "../../confirmation_modal/ConfirmationModal";
 
 
 export function CardUpper(props) {
@@ -16,10 +15,17 @@ const favorites = useSelector((state) => state.favorites);
 const [isFavorite, setIsFavorite] = useState(false);
 const [confirm, setConfirm] = useState(false);
 
+// gets the index of the beer on the favorite array state. lookup by beer Id
+const idx = favorites.findIndex(checkBeer);
+
+function checkBeer(beer) {
+    return beer.beerId == props.beer.id;
+}
 
 useEffect(() => {
     console.log('card upper use efect');
-    if(favorites.some(elem => elem['beerId'] == props.beer.id)) {
+    
+    if(idx != -1) {
         setIsFavorite(true);
     }
 },[]);
@@ -50,11 +56,19 @@ return <>
                         { AbvAmount[1].abv > props.beer.abv && props.beer.abv >= AbvAmount[2].abv &&   
                             <Badge  className='abv' bg={AbvAmount[2].text} > {props.beer.abv}</Badge>}
                     </Col>
+
                     <Col xs={5}>
-                        {props.location === '/favorite' && 
-                            <Rank/>
-                            }
+
+                        {/* this condintion check if this is a favorite beer, so rank props wont be undefined */}
+                        {idx != -1 &&
+                            <>
+                                {props.location === '/favorite' && 
+                                    <Rank beerId={props.beer.id} rank={favorites[idx].rank}/>
+                                }
+                            </>
+                        }
                     </Col>
+
                     <Col>
                         {!isFavorite && <Star onClick={() => handleAdd()}/>}
                         {isFavorite && <StarFill  style={{color:'gold'}} onClick={() => setConfirm(true)}/>}
