@@ -4,6 +4,7 @@ import './BeerCard.css'
 import {BeerInfoModal} from '../beer_info_modal/BeerInfoModal'
 import { CardUpper } from './card_upper/CardUpper.js'
 import { useLocation } from 'react-router-dom';
+import { ConfirmationModal } from '../confirmation_modal/ConfirmationModal';
 
 export function BeerCard(props) {
 

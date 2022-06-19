@@ -1,10 +1,12 @@
 import React from 'react';
 import { Container, Nav, Navbar } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { RemoveAllButton } from '../remove_all_button/RemoveAllButton.js';
 
 export function NavBar(props) {
 
     let navigate = useNavigate();
+    let location = useLocation();
 
     return <>
                 <Navbar sticky="top" variant='dark' bg="dark" expand="lg">
@@ -17,6 +19,7 @@ export function NavBar(props) {
                             <Nav.Link  onClick={() => navigate("/favorite")}>Favorite Beers</Nav.Link>
                         </Nav>
                         </Navbar.Collapse>
+                            {location.pathname === "/favorite" && <RemoveAllButton/>}
                     </Container>
                 </Navbar>           
             </>

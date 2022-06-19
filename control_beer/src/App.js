@@ -18,15 +18,15 @@ export default function App() {
           <>
             <NavBar/>
               <div className="App background_image">
-                    <Container>
-                      <Row>
-                        <Routes>
-                          <Route path="/" element={<BrowseBeers/>} />
-                          <Route path="/browse_beers" element={<BrowseBeers/>} />
-                          <Route path="/favorite" element={<FavoriteBeers/>} />      
-                        </Routes>
-                      </Row>
-                    </Container>
+                  <Container>
+                    <Row>
+                      <Routes>
+                        <Route path="/" element={<BrowseBeers/>} />
+                        <Route path="/browse_beers" element={<BrowseBeers/>} />
+                        <Route path="/favorite" element={<FavoriteBeers/>} />      
+                      </Routes>
+                    </Row>
+                  </Container>
               </div> 
           </>
          );

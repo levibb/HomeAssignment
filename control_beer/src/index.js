@@ -21,7 +21,7 @@ root.render(
   // <React.StrictMode>
     <BrowserRouter>
 
-    {/* provider means - every compoent im our app should have access to this store (global statae) */}
+    {/* provider means - every compoent im our app should have access to this store (global state) */}
         <Provider store={store}> 
           <App />
         </Provider>
