@@ -5,6 +5,7 @@ import { BeerCard } from '../base_components/beer_card/BeerCard';
 import { BASE_URL } from '../common/common';
 import { getData } from '../features/beers';
 import { FoodPairingFilter } from './food_pairing_filter/FoodPairingFilter';
+import InfiniteScroll from 'react-infinite-scroller';
 
 // export function GetData (optionalParams='') {
 //     console.log('get data function with optional path params: ',optionalParams)
@@ -41,6 +42,14 @@ export function BrowseBeers(props) {
     },[]);
 
     return  <>
+                {/* <InfiniteScroll
+                            pageStart={0}
+                            loadMore={loadFunc}
+                            hasMore={true || false}
+                            loader={<div className="loader" key={0}>Loading ...</div>}>
+                            {items} 
+                </InfiniteScroll> */}
+
                 <FoodPairingFilter/>
                 {beers.map(beer => {return( <BeerCard key={beer.id} beer={beer} /> )})}
             </>

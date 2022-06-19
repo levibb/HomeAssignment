@@ -21,9 +21,18 @@ export function FavoriteBeers(props) {
     },[favorites]);
 
     return <>
+            {favoritesData.length > 0 ?
+            <>
             {favoritesData.map(beer => {return( <BeerCard key={beer.id} beer={beer}/> 
-                )})}  
-
+                )})}
+            </>
+            :
+            <>
+                <hr/>
+                <hr/>
+                <h4 style={{color:'white',opacity:"80%"}} >No favorites beers to present yet</h4>
+            </>
+            }
             </>
 }
 

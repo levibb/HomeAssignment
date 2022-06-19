@@ -1,4 +1,5 @@
 import { Button, Modal } from "react-bootstrap";
+import { HandThumbsUpFill, LightbulbFill } from "react-bootstrap-icons";
 import { InfoTable } from "./info_table/InfoTable";
 
 export function BeerInfoModal(props) {
@@ -17,10 +18,14 @@ export function BeerInfoModal(props) {
         <Modal.Body>
           <h4>{props.beer.tagline}</h4>
           <p>
-            {props.beer.name}
+            {props.beer.name} - 
             {props.beer.description}
           </p>
           <InfoTable beer={props.beer}/>
+          <div style={{backgroundColor:'rgba(233, 233, 200,0.6)'}}>
+            <h6><HandThumbsUpFill/> Brewer Tip:</h6>
+            <p>{props.beer.brewers_tips}</p>
+          </div>
 
         </Modal.Body>
         <Modal.Footer>

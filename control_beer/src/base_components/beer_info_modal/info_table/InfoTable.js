@@ -5,31 +5,16 @@ export function InfoTable(props) {
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
+                        <th>Food Pairing</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    </tr>
-                    <tr>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    </tr>
-                    <tr>
-                    <td>3</td>
-                    <td colSpan={2}>Larry the Bird</td>
-                    <td>@twitter</td>
-                    </tr>
+                        {props.beer.food_pairing.map((pair,index) => {return( <tr key={index}><td >{pair}</td></tr> )})}
                 </tbody>
             </Table>
     )
 }
+
+// first_brewed
+// food_pairing
+// brewers_tips
