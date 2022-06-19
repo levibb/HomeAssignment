@@ -38,7 +38,7 @@
 }
 
 .background_image {
-  min-height:1000px;
+  min-height:600px;
   background-size:contain;
   background-repeat:repeat; 
   background-attachment: fixed;

@@ -1,17 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
-const initialStateValue = []
+const initialState = []
 
 const beersSlice = createSlice({
     name: "beers",
-    initialState: { value: initialStateValue},
+    initialState: initialState,
     reducers: {
         getData: (state,action) => { 
-            state.value = action.payload;
+            state.push(...action.payload)
+        },
+        resetData: (state) => { 
+            state.length = 0
         }
     }
 });
 
-export const { getData } = beersSlice.actions;
+export const { getData,resetData } = beersSlice.actions;
 
 export default beersSlice.reducer;
