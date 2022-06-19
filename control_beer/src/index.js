@@ -7,10 +7,12 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom'
 import { configureStore } from "@reduxjs/toolkit";
 import beersReducer from "./features/beers.js";
+import favoritesReducer from "./features/favorites.js";
 
 const store = configureStore({
   reducer: {
-    beers: beersReducer
+    beers: beersReducer,
+    favorites: favoritesReducer
   }
 })
 

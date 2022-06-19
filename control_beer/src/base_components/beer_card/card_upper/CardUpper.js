@@ -1,12 +1,29 @@
 import { Badge, Container, Col, Row } from "react-bootstrap";
-import { Star } from 'react-bootstrap-icons';
+import { Star, StarFill } from 'react-bootstrap-icons';
 import { Rank } from "../rank/Rank";
 import './CardUpper.css'
 import { AbvAmount } from "../../../common/common";
+import { useDispatch, useSelector } from "react-redux";
+import { addToFavorites } from "../../../features/favorites";
+import { useEffect, useState } from "react";
 
 
 export function CardUpper(props) {
 
+const dispatch = useDispatch();
+const favorites = useSelector((state) => state.favorites);
+const [isFavorite, setIsFavorite] = useState(false);
+
+
+useEffect(() => {
+    console.log('card upper use efect');
+    if(favorites.some(elem => elem['beerId'] == props.beer.id)) {
+        setIsFavorite(true);
+    }
+    if ((isFavorite) && (!favorites.some(elem => elem['beerId'] == props.beer.id))){
+        dispatch(addToFavorites(props.beer.id))
+    }
+},[isFavorite]);
 
 return <Container className='p-3'>
             <Row >
@@ -27,7 +44,8 @@ return <Container className='p-3'>
                         }
                 </Col>
                 <Col>
-                    <Star className='star'/>
+                    {!isFavorite && <Star onClick={() => setIsFavorite(true)}/>}
+                    {isFavorite && <StarFill  onClick={() => setIsFavorite(false)}/>}
                 </Col>
             </Row>
         </Container>

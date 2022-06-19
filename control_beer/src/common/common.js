@@ -29,3 +29,12 @@ export function GetData (optionalParams='') {
                 console.log(404)
     }})
     }
+
+    export function idsForApiRequest(idsList){
+        let idString = ''
+        for (let i = 0; i < idsList.length; i++) {
+            idString = idString + idsList[i]['beerId'] + '|' 
+          }
+          console.log('result:', idString)
+          return idString
+        }

@@ -6,8 +6,7 @@ import { Container,Row } from 'react-bootstrap';
 import { BrowseBeers } from './browse_beers/BrowseBeers';
 import { Route, Routes } from 'react-router-dom';
 import { FavoriteBeers } from './favorite_beers/FavoriteBeers';
-import { useDispatch, useSelector } from 'react-redux';
-import { addNewElem, removeAll, removeElem } from './redux/favorites';
+
 
 export default function App() {
 
