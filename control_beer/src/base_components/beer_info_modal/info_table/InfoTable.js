@@ -14,7 +14,3 @@ export function InfoTable(props) {
             </Table>
     )
 }
-
-// first_brewed
-// food_pairing
-// brewers_tips

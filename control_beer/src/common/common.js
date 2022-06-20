@@ -1,4 +1,3 @@
-import axios from "axios"
 
 // this dictionary is used for setting the levels of coloring the ABV value on the beer card
 export const AbvAmount = [  {'abv':10,'text':'danger'},
@@ -8,8 +7,9 @@ export const AbvAmount = [  {'abv':10,'text':'danger'},
 
 export const BASE_URL = 'https://api.punkapi.com/v2/beers'
 
+export const RES_PER_PAGE = 15
 
-export function GetData (optionalParams='') {
+export function setOptionalParams (optionalParams='') {
     console.log('get data function with optional path params: ',optionalParams)
 
     // the next condition check if there are any search parameters to use, and if so, it replace spaces with _ and creates the 
@@ -18,18 +18,20 @@ export function GetData (optionalParams='') {
     if (optionalParams) {
         paramsDict['food'] = optionalParams.replace(/ /g, '_')
     }
+    {return(paramsDict)}
+}
 
-    axios.get(BASE_URL,{params: paramsDict})
-        .then(response => {
-            console.log('response from api: ',response)
-            })
-        .catch(error => {
-        console.log('error ')
-            if (error.response.status === 404) {
-                console.log(404)
-    }})
-    }
-
+    // axios.get(BASE_URL,{params: paramsDict})
+    //     .then(response => {
+    //         console.log('response from api: ',response)
+    //         })
+    //     .catch(error => {
+    //     console.log('error ')
+    //         if (error.response.status === 404) {
+    //             console.log(404)
+    // }})
+    
+    // this function create a string for API request with specific beer ids.
     export function idsForApiRequest(idsList){
         let idString = ''
         for (let i = 0; i < idsList.length; i++) {

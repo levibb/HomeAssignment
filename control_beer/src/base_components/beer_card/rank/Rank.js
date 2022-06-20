@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch} from "react-redux";
 import { updateRank } from "../../../features/favorites";
 import "./Rank.css"
 

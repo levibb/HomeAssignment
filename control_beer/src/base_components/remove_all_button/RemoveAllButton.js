@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { Button } from "react-bootstrap"
-import { useDispatch, useSelector } from "react-redux"
-import { removeAll } from "../../features/favorites"
+import { useSelector } from "react-redux"
 import { ConfirmationModal } from "../confirmation_modal/ConfirmationModal"
 import "./RemoveAllButton.css"
 
