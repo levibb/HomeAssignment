@@ -25,18 +25,13 @@ export function BrowseBeers(props) {
             .then((response) => {
                 if (response.data.length === 0){
                     setNextPage(false)
-                    window.removeEventListener('scroll',handleScroll)
-                    console.log('end of data - no next')
+                    console.log('end of data - no next',nextPage)
                     {return}
                 }
                 dispatch(getData([...response.data]));
                 setLoading(false)
                 console.log('API called',response)
             });
-        }
-        if (!nextPage){
-            setLoading(false)
-            console.log('no next pageeeeee',nextPage,page)
         }
     }
 
@@ -51,18 +46,6 @@ export function BrowseBeers(props) {
             console.log('got to bottom of the page')
             }
         }
-
-    // const handleScroll = (e) => { // i thik the reaso its ot reactig to state chage because its comst
-    //     let top = e.target.documentElement.scrollTop
-    //     let win = window.innerHeight
-    //     let height = e.target.documentElement.scrollHeight
-
-    //     if (top + win + 1 >= height){
-    //         console.log('got to bottom of the page')
-    //         setPage((prevState) => (prevState+1))
-    //         setLoading(true)
-    //         }
-    //     }
     
     // this function reset the page to top and first page results only
     function firstLoad(){
@@ -78,8 +61,14 @@ export function BrowseBeers(props) {
     }
 
     useEffect(() => {
-        console.log('next has changed',nextPage)
-        window.removeEventListener('scroll',handleScroll)
+        if (nextPage) {
+        window.addEventListener('scroll',handleScroll)
+        console.log('added event listener to scroll',nextPage)
+        return(() => {
+            console.log('inside return - next page',nextPage) // calls before will un mount
+            setLoading(false)
+            window.removeEventListener('scroll',handleScroll)
+            })}
     }
     ,[nextPage])
 
@@ -92,7 +81,6 @@ export function BrowseBeers(props) {
     // this function runs each time the page is routed and presented, and it reset the beers data to first page only 
     useEffect(() => {
         console.log('first time euse effect')
-        window.addEventListener('scroll',handleScroll)
         firstLoad()
         },[]);
 

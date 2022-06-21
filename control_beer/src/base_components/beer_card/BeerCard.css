@@ -19,6 +19,13 @@
     justify-content: space-between;
 }
 
+.click-area{
+    display: flex;
+    flex-direction: column;
+    /* height: 100%; */
+    flex-grow: 1;
+    
+}
 .card-body {
     display: flex;
     flex-direction: column;

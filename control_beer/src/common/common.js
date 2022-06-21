@@ -10,7 +10,6 @@ export const BASE_URL = 'https://api.punkapi.com/v2/beers'
 export const RES_PER_PAGE = 15
 
 export function setOptionalParams (optionalParams='') {
-    console.log('get data function with optional path params: ',optionalParams)
 
     // the next condition check if there are any search parameters to use, and if so, it replace spaces with _ and creates the 
     // path params dictionary to send with API request

@@ -15,8 +15,10 @@ export function BeerCard(props) {
                 <Col className="py-2 mt-2">  
                     <Card className='animate'>
                         <CardUpper location={location.pathname} beer={props.beer}/>
-                        <div onClick={() => setShowInfoModal(true)}>
+                        <div className='click-area' onClick={() => setShowInfoModal(true)}>
+               
                             <Card.Img className='card-img' variant="bottom" src={props.beer.image_url} />
+             
                             <Card.Body> 
                                 <div style={{marginTop: '12px'}}>
                                  

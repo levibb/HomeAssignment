@@ -23,7 +23,7 @@ function checkBeer(beer) {
 }
 
 useEffect(() => {
-    console.log('card upper use efect',props.beer.id);
+    // console.log('card upper use efect',props.beer.id);
     if(idx !== -1) {
         setIsFavorite(true);
     }
