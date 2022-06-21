@@ -20,7 +20,7 @@ const favoritesSlice = createSlice({
         // this action finds the beer Id on the array in reverse direction and removes it
         removeFromFavorites: (state,action) => { 
             for (var i = state.length - 1; i >= 0; --i) {
-                if (current(state)[i].beerId == action.payload) {
+                if (current(state)[i].beerId === action.payload) {
                     state.splice(i,1);
                     console.log('removed Id',action.payload,'from favorites',current(state))
                     { break; }
@@ -40,7 +40,7 @@ const favoritesSlice = createSlice({
             const index = state.findIndex(checkBeer);
 
             function checkBeer(beer) {
-              return beer.beerId == action.payload.beerId;
+              return beer.beerId === action.payload.beerId;
             }
 
             console.log('update rank for beer Id: ',action.payload)

@@ -29,7 +29,7 @@ export function BrowseBeers(props) {
                      { params:setOptionalParams(search)})
 
                  .then((response) => {
-                     if (response.status=200){
+                     if (response.status === 200){
                         if (response.data.length === 0){
                             setNextPage(false)
                             console.log('end of data - no next',nextPage)
