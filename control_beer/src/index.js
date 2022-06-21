@@ -8,12 +8,14 @@ import { BrowserRouter } from 'react-router-dom'
 import { configureStore } from "@reduxjs/toolkit";
 import beersReducer from "./features/beers.js";
 import favoritesReducer from "./features/favorites.js";
+import favoritesDataReducer from "./features/favoritesData.js";
 import searchReducer from './features/search.js'
 
 const store = configureStore({
   reducer: {
     beers: beersReducer,
     favorites: favoritesReducer,
+    favoritesData : favoritesDataReducer,
     search: searchReducer
   }
 })

@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {  useSelector } from "react-redux";
+import {  useDispatch, useSelector } from "react-redux";
 import { BeerCard } from "../base_components/beer_card/BeerCard"
 import { BASE_URL, idsForApiRequest } from "../common/common";
 import { LoadingSpinner } from "../base_components/spinner/LoadingSpinner";
+import { getFavoriteData } from "../features/favoritesData";
 
 export function FavoriteBeers(props) {
 
-    const [favoritesData, setFavoritesData] = useState([]);
     const [loading, setLoading] = useState(true);
+
     const favorites = useSelector((state) => state.favorites);
+    const favoritesData = useSelector((state) => state.favoritesData);
+    const dispatch = useDispatch()
 
 
     useEffect(() => {
         console.log('favorites',favorites)
         window.scrollTo(0, 0);
-        axios.get(BASE_URL+'?ids='+idsForApiRequest(favorites))
+        axios.get(BASE_URL+'?ids='+idsForApiRequest(favorites)) // this function create a string of id's as request by API
         .then((response) => {
             setLoading(false)
-            setFavoritesData(response.data)
-            console.log('API called with IDs for faavorites beers')
+            dispatch(getFavoriteData([...response.data]))
         });
     },[favorites]);
 
