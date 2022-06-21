@@ -33,7 +33,7 @@ export function FoodPairingFilter(props) {
                                 </Col>
 
                                 <Col>
-                                    {props.searchValue &&
+                                    {search &&
                                         <Button variant='danger' 
                                                 style = {{opacity:'60%f'}}
                                                 onClick={() => dispatch(resetValue())}

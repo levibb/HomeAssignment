@@ -17,18 +17,23 @@ export function FavoriteBeers(props) {
 
 
     useEffect(() => {
-        console.log('favorites',favorites)
         window.scrollTo(0, 0);
 
+        if((favoritesData.length !== favorites.length)){ //this means it will only send API request whenever favorite beer added or removed (and not when ranked)
         axios.get(BASE_URL+'?ids='+idsForApiRequest(favorites)) // this function create a string of id's as request by API
         .then((response) => {
             setLoading(false)
             dispatch(getFavoriteData([...response.data]))
+            console.log ('sent API request for favorite beers id',response.data)
         })
         .catch(function (error) { 
             const errorResult = errorHandling(error)
                 dispatch(setError(errorResult))
             })
+        }
+        if (favorites.length===0){
+            setLoading(false)
+        }
 
     },[favorites]);
 
