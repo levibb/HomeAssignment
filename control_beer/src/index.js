@@ -10,13 +10,15 @@ import beersReducer from "./features/beers.js";
 import favoritesReducer from "./features/favorites.js";
 import favoritesDataReducer from "./features/favoritesData.js";
 import searchReducer from './features/search.js'
+import errorReducer from './features/error.js'
 
 const store = configureStore({
   reducer: {
     beers: beersReducer,
     favorites: favoritesReducer,
     favoritesData : favoritesDataReducer,
-    search: searchReducer
+    search: searchReducer,
+    error: errorReducer
   }
 })
 

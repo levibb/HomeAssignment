@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {  useDispatch, useSelector } from "react-redux";
 import { BeerCard } from "../base_components/beer_card/BeerCard"
-import { BASE_URL, idsForApiRequest } from "../common/common";
+import { BASE_URL, errorHandling, idsForApiRequest } from "../common/common";
 import { LoadingSpinner } from "../base_components/spinner/LoadingSpinner";
 import { getFavoriteData } from "../features/favoritesData";
+import { setError } from "../features/error";
 
 export function FavoriteBeers(props) {
 
@@ -18,11 +19,17 @@ export function FavoriteBeers(props) {
     useEffect(() => {
         console.log('favorites',favorites)
         window.scrollTo(0, 0);
+
         axios.get(BASE_URL+'?ids='+idsForApiRequest(favorites)) // this function create a string of id's as request by API
         .then((response) => {
             setLoading(false)
             dispatch(getFavoriteData([...response.data]))
-        });
+        })
+        .catch(function (error) { 
+            const errorResult = errorHandling(error)
+                dispatch(setError(errorResult))
+            })
+
     },[favorites]);
 
     return <>

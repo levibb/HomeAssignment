@@ -3,40 +3,48 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { BeerCard } from '../base_components/beer_card/BeerCard';
 import { LoadingSpinner } from '../base_components/spinner/LoadingSpinner';
-import { BASE_URL, RES_PER_PAGE, setOptionalParams  } from '../common/common';
+import { BASE_URL, errorHandling, RES_PER_PAGE, setOptionalParams  } from '../common/common';
 import { getData, resetData } from '../features/beers';
 import { FoodPairingFilter } from './food_pairing_filter/FoodPairingFilter';
+import { setError } from '../features/error';
 
 export function BrowseBeers(props) {
 
     const beers = useSelector((state) => state.beers);
     const search = useSelector((state) => state.search.value);
+
     const dispatch = useDispatch();
 
     const [loading, setLoading] = useState(true);
     const [nextPage, setNextPage] = useState(true);
     const [page, setPage] = useState(0)
 
-    
 
     // this function send API request with page number and send it the beer's global state and add it to prev data.
     function loadData(){
 
         if ((nextPage) && (page > 0)){ // page 0 return error - first page result is 1
             setLoading(true)
+
             axios.get(BASE_URL+'?per_page='+RES_PER_PAGE+'&page='+page, 
                      { params:setOptionalParams(search)})
 
                  .then((response) => {
-                    if (response.data.length === 0){
-                        setNextPage(false)
-                        console.log('end of data - no next',nextPage)
-                        {return}
-                    }
-                dispatch(getData([...response.data]));
-                setLoading(false)
-                console.log('API called',response)
-            });
+                     if (response.status=200){
+                        if (response.data.length === 0){
+                            setNextPage(false)
+                            console.log('end of data - no next',nextPage)
+                            {return}
+                        }
+                        dispatch(getData([...response.data]));
+                        setLoading(false)
+                        console.log('API called',response)
+                        } 
+                    })
+                .catch(function (error) { 
+                    const errorResult = errorHandling(error)
+                        dispatch(setError(errorResult))
+                    })
         }
     }
 
@@ -88,7 +96,7 @@ export function BrowseBeers(props) {
     // this function runs each time the page is routed and presented, and it reset the beers data to first page only 
     useEffect(() => {
         console.log('first time load - use effect')
-        firstLoad()
+        firstLoad() 
         },[]);
 
     return  <>
