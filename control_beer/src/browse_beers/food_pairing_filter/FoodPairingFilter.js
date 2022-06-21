@@ -1,18 +1,13 @@
+import React from 'react'
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
+import { useDispatch, useSelector } from 'react-redux';
+import { changeValue, resetValue } from '../../features/search';
 import './FoodPairingFilter.css'
 
 export function FoodPairingFilter(props) {
 
-    // this function store the searach value on the upper level component 
-function handleOnChange(e){
-    console.log('handleOnChange',e.currentTarget.value)
-    props.setSearchValue(e.currentTarget.value) 
-}
-
-function handleReset(e){
-    console.log('handleReset')
-    props.setSearchValue('')
-}
+    const search = useSelector((state) => state.search.value);
+    const dispatch = useDispatch();
 
     return (
         <>
@@ -27,8 +22,8 @@ function handleReset(e){
 
                                 <Col sm={4}>
                                     <Form.Control placeholder="Smoked chicken wings / Miso ramen / Garlic butter"
-                                                  value={props.searchValue}
-                                                  onChange={(e)=> handleOnChange(e)}/>
+                                                  value={search}
+                                                  onChange={(e) => dispatch(changeValue(e.target.value))}/>
                                 </Col>
 
                                 <Col sm={1}>
@@ -41,7 +36,7 @@ function handleReset(e){
                                     {props.searchValue &&
                                         <Button variant='danger' 
                                                 style = {{opacity:'60%f'}}
-                                                onClick={() => handleReset()}
+                                                onClick={() => dispatch(resetValue())}
                                                 >Reset</Button>}
                                 </Col>
                             </Row>

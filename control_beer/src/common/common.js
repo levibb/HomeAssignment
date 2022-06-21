@@ -4,10 +4,9 @@ export const AbvAmount = [  {'abv':10,'text':'danger'},
                             {'abv':5,'text':'dark'},
                             {'abv':0,'text':'success'}]
 
+export const RES_PER_PAGE = 15
 
 export const BASE_URL = 'https://api.punkapi.com/v2/beers'
-
-export const RES_PER_PAGE = 15
 
 export function setOptionalParams (optionalParams='') {
 
@@ -21,11 +20,11 @@ export function setOptionalParams (optionalParams='') {
 }
     
     // this function create a string for API request with specific beer ids.
-    export function idsForApiRequest(idsList){
-        let idString = ''
-        for (let i = 0; i < idsList.length; i++) {
-            idString = idString + idsList[i]['beerId'] + '|' 
-          }
-          console.log('result:', idString)
-          return idString
+export function idsForApiRequest(idsList){
+    let idString = ''
+    for (let i = 0; i < idsList.length; i++) {
+        idString = idString + idsList[i]['beerId'] + '|' 
         }
+        console.log('result:', idString)
+        return idString
+    }

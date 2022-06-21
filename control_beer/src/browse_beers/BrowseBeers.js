@@ -1,5 +1,5 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { BeerCard } from '../base_components/beer_card/BeerCard';
 import { LoadingSpinner } from '../base_components/spinner/LoadingSpinner';
@@ -10,24 +10,29 @@ import { FoodPairingFilter } from './food_pairing_filter/FoodPairingFilter';
 export function BrowseBeers(props) {
 
     const beers = useSelector((state) => state.beers);
+    const search = useSelector((state) => state.search.value);
+    const dispatch = useDispatch();
+
     const [loading, setLoading] = useState(true);
     const [nextPage, setNextPage] = useState(true);
-    const dispatch = useDispatch();
     const [page, setPage] = useState(0)
-    const [searchValue, setSearchValue] = useState('');  
+
+    
 
     // this function send API request with page number and send it the beer's global state and add it to prev data.
     function loadData(){
+
         if ((nextPage) && (page > 0)){ // page 0 return error - first page result is 1
             setLoading(true)
-            axios.get(BASE_URL+'?page='+page+'&per_page='+RES_PER_PAGE, 
-            { params: setOptionalParams(searchValue)})
-            .then((response) => {
-                if (response.data.length === 0){
-                    setNextPage(false)
-                    console.log('end of data - no next',nextPage)
-                    {return}
-                }
+            axios.get(BASE_URL+'?per_page='+RES_PER_PAGE+'&page='+page, 
+                     { params:setOptionalParams(search)})
+
+                 .then((response) => {
+                    if (response.data.length === 0){
+                        setNextPage(false)
+                        console.log('end of data - no next',nextPage)
+                        {return}
+                    }
                 dispatch(getData([...response.data]));
                 setLoading(false)
                 console.log('API called',response)
@@ -54,20 +59,22 @@ export function BrowseBeers(props) {
         dispatch(resetData());
         if (page===1){
             loadData() // trigger loadData without dependency on page change
-        }
-        else{
+        }else{
             setPage(1) // this will trigger the loadData function by useEffect callback
         }
     }
 
+    // this calls each time theres a new data request and it add event listener to scroll, untill there is no more data to add
     useEffect(() => {
         if (nextPage) {
         window.addEventListener('scroll',handleScroll)
         console.log('added event listener to scroll',nextPage)
-        return(() => {
-            console.log('inside return - next page',nextPage) // calls before will un mount
+
+        // calls before will un mount
+        return(() => { 
             setLoading(false)
             window.removeEventListener('scroll',handleScroll)
+            console.log('inside return -removed event listener from scroll',nextPage) 
             })}
     }
     ,[nextPage])
@@ -80,18 +87,13 @@ export function BrowseBeers(props) {
 
     // this function runs each time the page is routed and presented, and it reset the beers data to first page only 
     useEffect(() => {
-        console.log('first time euse effect')
+        console.log('first time load - use effect')
         firstLoad()
         },[]);
 
     return  <>
-                <FoodPairingFilter  searchValue={searchValue} 
-                                    setSearchValue={setSearchValue}
-                                    firstLoad={firstLoad}
-                                    loadData={loadData}/>
-
+                <FoodPairingFilter firstLoad={firstLoad}/>
                 {beers.map(beer => {return( <BeerCard key={beer.id} beer={beer} /> )})} 
-                
                 {loading && <LoadingSpinner/> }
             </>
   }

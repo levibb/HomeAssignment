@@ -1,3 +1,4 @@
+import React from 'react'
 import { Button, Modal } from "react-bootstrap";
 import { HandThumbsUpFill, LightbulbFill } from "react-bootstrap-icons";
 import { InfoTable } from "./info_table/InfoTable";

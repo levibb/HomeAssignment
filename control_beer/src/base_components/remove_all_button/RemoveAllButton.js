@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import { Button } from "react-bootstrap"
 import { useSelector } from "react-redux"
 import { ConfirmationModal } from "../confirmation_modal/ConfirmationModal"
@@ -13,11 +13,12 @@ export function RemoveAllButton(props) {
             <>
             {favorites.length > 0 &&
                 <Button variant='dark' 
-                onClick={() => setConfirmModal(true)}
-                >remove all favorites</Button>}
+                    onClick={() => setConfirmModal(true)}
+                    >remove all favorites</Button>}
 
             {showConfirmModal &&
-            <ConfirmationModal onHide={() => setConfirmModal(false)} show={showConfirmModal}/>}
+            <ConfirmationModal  onHide={() => setConfirmModal(false)} 
+                                show={showConfirmModal}/>}
             </>
     )
     }

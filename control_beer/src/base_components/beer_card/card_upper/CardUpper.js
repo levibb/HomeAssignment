@@ -1,3 +1,4 @@
+import React ,{ useEffect, useState } from 'react';
 import { Badge, Container, Col, Row, Button } from "react-bootstrap";
 import { Star, StarFill } from 'react-bootstrap-icons';
 import { Rank } from "../rank/Rank";
@@ -5,7 +6,6 @@ import './CardUpper.css'
 import { AbvAmount } from "../../../common/common";
 import { useDispatch, useSelector } from "react-redux";
 import { addToFavorites, removeFromFavorites } from "../../../features/favorites";
-import { useEffect, useState } from "react";
 
 
 export function CardUpper(props) {

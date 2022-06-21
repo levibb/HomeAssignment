@@ -1,3 +1,4 @@
+import React from 'react'
 import { Col, Container, Spinner } from "react-bootstrap";
 
 export function LoadingSpinner(props) {
