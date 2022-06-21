@@ -19,12 +19,12 @@ const [confirm, setConfirm] = useState(false);
 const idx = favorites.findIndex(checkBeer);
 
 function checkBeer(beer) {
-    return beer.beerId == props.beer.id;
+    return beer.beerId === props.beer.id;
 }
 
 useEffect(() => {
     console.log('card upper use efect',props.beer.id);
-    if(idx != -1) {
+    if(idx !== -1) {
         setIsFavorite(true);
     }
 },[]);
@@ -47,19 +47,19 @@ return <>
                     <Col>
 
                         {props.beer.abv >= AbvAmount[0].abv &&   
-                            <Badge  className='abv' bg={AbvAmount[0].text} > {props.beer.abv} %</Badge>}
+                            <Badge  className='abv' bg={AbvAmount[0].text} > {props.beer.abv.toFixed(1)} %</Badge>}
 
                         { AbvAmount[0].abv > props.beer.abv && props.beer.abv >= AbvAmount[1].abv &&   
-                            <Badge  className='abv' bg={AbvAmount[1].text} > {props.beer.abv} %</Badge>}
+                            <Badge  className='abv' bg={AbvAmount[1].text} > {props.beer.abv.toFixed(1)} %</Badge>}
 
                         { AbvAmount[1].abv > props.beer.abv && props.beer.abv >= AbvAmount[2].abv &&   
-                            <Badge  className='abv' bg={AbvAmount[2].text} > {props.beer.abv} %</Badge>}
+                            <Badge  className='abv' bg={AbvAmount[2].text} > {props.beer.abv.toFixed(1)} %</Badge>}
                     </Col>
 
                     <Col xs={5}>
 
                         {/* this condintion check if this is a favorite beer, so rank props wont be undefined */}
-                        {idx != -1 &&
+                        {idx !== -1 &&
                             <>
                                 {props.location === '/favorite' && 
                                     <Rank beerId={props.beer.id} rank={favorites[idx].rank}/>

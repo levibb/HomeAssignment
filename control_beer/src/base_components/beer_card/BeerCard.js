@@ -17,10 +17,17 @@ export function BeerCard(props) {
                         <CardUpper location={location.pathname} beer={props.beer}/>
                         <div onClick={() => setShowInfoModal(true)}>
                             <Card.Img className='card-img' variant="bottom" src={props.beer.image_url} />
-                            <Card.Body > 
+                            <Card.Body> 
                                 <div style={{marginTop: '12px'}}>
-                                    <Card.Title className='bg' >{props.beer.name} </Card.Title>
-                                    <Card.Text> {props.beer.tagline}</Card.Text>
+                                 
+                                    <Card.Title className='bg' > {  props.beer.name.length < 15 ? 
+                                                                    props.beer.name : 
+                                                                    props.beer.name.slice(0,15)}</Card.Title>
+
+                                    <Card.Text > {   props.beer.tagline.length < 40 ?
+                                                     props.beer.tagline :
+                                                     props.beer.tagline.slice(0,40)} </Card.Text>
+                                    
                                 </div>
                             </Card.Body>
                         </div>

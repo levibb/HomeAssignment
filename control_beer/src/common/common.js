@@ -20,16 +20,6 @@ export function setOptionalParams (optionalParams='') {
     }
     {return(paramsDict)}
 }
-
-    // axios.get(BASE_URL,{params: paramsDict})
-    //     .then(response => {
-    //         console.log('response from api: ',response)
-    //         })
-    //     .catch(error => {
-    //     console.log('error ')
-    //         if (error.response.status === 404) {
-    //             console.log(404)
-    // }})
     
     // this function create a string for API request with specific beer ids.
     export function idsForApiRequest(idsList){
