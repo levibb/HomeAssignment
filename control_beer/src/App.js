@@ -34,7 +34,8 @@ export default function App() {
                             <Route path="/favorite" element={<FavoriteBeers/>} />      
                           </Routes>
                         </Row>
-                      </Container>}
+                      </Container>
+                    }
               </div> 
           </>
          );

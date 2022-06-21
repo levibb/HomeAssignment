@@ -24,16 +24,14 @@ const store = configureStore({
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
     <BrowserRouter>
 
-    {/* provider means - every compoent im our app should have access to this store (global state) */}
-        <Provider store={store}> 
-          <App />
-        </Provider>
+    {/* provider - every component in the app should have access to this store (global state) */}
+      <Provider store={store}> 
+        <App />
+      </Provider>
 
     </BrowserRouter>
-  // </React.StrictMode>
 );
 
 reportWebVitals();

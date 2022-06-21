@@ -12,7 +12,6 @@ export function BrowseBeers(props) {
 
     const beers = useSelector((state) => state.beers);
     const search = useSelector((state) => state.search.value);
-
     const dispatch = useDispatch();
 
     const [loading, setLoading] = useState(true);

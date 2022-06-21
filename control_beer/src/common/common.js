@@ -40,8 +40,8 @@ export function errorHandling (error){
         } else if (error.request) {
             // The request was made but no response was received
             console.log(error.request);
-            return({value: 500, message : 'No response from server' })
-            
+            return({value: 102, message : 'No response from server yet' })
+
         } else {
             // Something happened in setting up the request that triggered an Error
             console.log('Error', error.message);

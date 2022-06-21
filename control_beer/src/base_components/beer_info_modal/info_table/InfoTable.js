@@ -9,7 +9,7 @@ export function InfoTable(props) {
                     </tr>
                 </thead>
                 <tbody>
-                        {props.beer.food_pairing.map((pair,index) => {return( <tr key={index}><td >{pair}</td></tr> )})}
+                    {props.beer.food_pairing.map((pair,index) => {return( <tr key={index}><td >{pair}</td></tr> )})}
                 </tbody>
             </Table>
     )

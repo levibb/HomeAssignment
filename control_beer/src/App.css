@@ -42,5 +42,5 @@
   background-size:contain;
   background-repeat:repeat; 
   background-attachment: fixed;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.3)) , url('../public/bg.jpeg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.3)) , url('./bg.jpeg');
 }

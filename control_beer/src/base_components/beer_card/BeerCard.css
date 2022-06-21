@@ -12,7 +12,7 @@
     border-style: solid;
     align-items: center;
     color: rgb(233, 233, 233);
-    background: url('./cardbg.png');
+    background: url('./img/cardbg.png');
     border-color: rgb(255, 254, 254);
     display: flex;
     flex-direction: column;
@@ -42,7 +42,7 @@
     box-shadow: 5px 6px 6px 2px #1d1d1d;
     transform: scale(1.04);
     color:black;
-    background: url('./beer-levi2.gif');
+    background: url('./img/beer-levi2.gif');
     background-position-x: right;
 }
 
@@ -54,8 +54,3 @@
 .star {
     width: 25px;
 }
-
-/* https://blog.openreplay.com/mastering-css-transitions-with-react-18 */
-/* https://dev.to/adriantwarog/tutorial-on-css-background-image-hovers-transitions-10cm */
-/* 'https://acegif.com/wp-content/gif/beer-10.gif' */
-
