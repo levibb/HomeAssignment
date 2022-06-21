@@ -24,11 +24,11 @@ export function ConfirmationModal(props) {
 
         <Modal.Footer>
           <Button size='xs' variant="danger" onClick={props.onHide}>
-            No
+             No
           </Button>
 
           <Button size='xs' variant="dark" onClick={() => confirmAction()}>
-            Yes
+             Yes
           </Button>
           
         </Modal.Footer>
