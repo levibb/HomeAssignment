@@ -31,10 +31,7 @@ export function FavoriteBeers(props) {
                 dispatch(setError(errorResult))
             })
         }
-        if (favorites.length===0){
             setLoading(false)
-        }
-
     },[favorites]);
 
     return <>
